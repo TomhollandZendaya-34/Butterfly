@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Taj Reena 🦋</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  overflow-x:hidden;
+
+  font-family:'Poppins',sans-serif;
+
+  min-height:100vh;
+
+  color:#5e4867;
+
+  transition:1.2s ease;
+
+  background:
+  radial-gradient(circle at top left,#ffdff2 0%,transparent 30%),
+  radial-gradient(circle at bottom right,#d8c2ff 0%,transparent 35%),
+  linear-gradient(135deg,#fff7fc,#f4edff);
+}
+
+/* NIGHT MODE */
+
+body.night{
+
+  background:
+  radial-gradient(circle at top,#31345f 0%,transparent 30%),
+  radial-gradient(circle at bottom,#171827 0%,transparent 35%),
+  linear-gradient(135deg,#121320,#1f2036);
+
+  color:#ece7ff;
+}
+
+/* MUSIC REACTIVE GLOW */
+
+.music-glow{
+
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  z-index:-3;
+
+  background:
+  radial-gradient(circle at center,
+  rgba(255,190,230,.18),
+  transparent 65%);
+
+  animation:musicGlow 5s ease-in-out infinite;
+}
+
+@keyframes musicGlow{
+
+  0%{
+    transform:scale(1);
+    opacity:.35;
+  }
+
+  50%{
+    transform:scale(1.08);
+    opacity:.65;
+  }
+
+  100%{
+    transform:scale(1);
+    opacity:.35;
+  }
+}
+
+/* CONSTELLATION */
+
+.constellation{
+
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  z-index:-1;
+
+  display:none;
+}
+
+body.night .constellation{
+  display:block;
+}
+
+.star{
+
+  position:absolute;
+
+  width:2px;
+  height:2px;
+
+  background:white;
+
+  border-radius:50%;
+
+  box-shadow:
+  0 0 8px rgba(255,255,255,.9);
+
+  animation:
+  twinkle 4s infinite alternate;
+}
+
+.bp-star{
+
+  width:3px;
+  height:3px;
+
+  box-shadow:
+  0 0 14px rgba(255,255,255,1),
+  0 0 30px rgba(180,190,255,.7);
+}
+
+.line{
+
+  position:absolute;
+
+  height:1px;
+
+  background:rgba(255,255,255,.18);
+
+  transform-origin:left center;
+}
+
+@keyframes twinkle{
+
+  from{
+    opacity:.35;
+  }
+
+  to{
+    opacity:1;
+  }
+}
+
+/* SHOOTING STAR */
+
+.shooting-star{
+
+  position:fixed;
+
+  top:-100px;
+  left:-100px;
+
+  width:180px;
+  height:2px;
+
+  background:
+  linear-gradient(to right,white,transparent);
+
+  transform:rotate(35deg);
+
+  opacity:0;
+
+  pointer-events:none;
+
+  z-index:0;
+
+  animation:shoot 10s linear infinite;
+}
+
+@keyframes shoot{
+
+  0%{
+    top:-10%;
+    left:-10%;
+    opacity:0;
+  }
+
+  5%{
+    opacity:1;
+  }
+
+  20%{
+    top:40%;
+    left:120%;
+    opacity:0;
+  }
+
+  100%{
+    opacity:0;
+  }
+}
+
+/* MOON */
+
+.moon{
+
+  position:fixed;
+
+  top:60px;
+  right:60px;
+
+  width:95px;
+  height:95px;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(circle at top left,#fff,#dce1ff);
+
+  box-shadow:
+  0 0 40px rgba(255,255,255,.5),
+  0 0 90px rgba(180,190,255,.28);
+
+  z-index:2;
+
+  display:none;
+
+  cursor:pointer;
+
+  transition:.5s ease;
+}
+
+body.night .moon{
+  display:block;
+}
+
+.moon.active{
+
+  background:
+  radial-gradient(circle at top left,
+  #fff7d9,
+  #ffdca8);
+
+  box-shadow:
+  0 0 50px rgba(255,230,170,.8),
+  0 0 120px rgba(255,210,120,.35);
+
+  transform:scale(1.08);
+}
+
+/* MOON QUOTE */
+
+.moon-quote{
+
+  position:fixed;
+
+  top:175px;
+  right:25px;
+
+  width:310px;
+
+  padding:20px 22px;
+
+  border-radius:30px;
+
+  background:
+  rgba(255,255,255,.12);
+
+  backdrop-filter:blur(18px);
+
+  border:
+  1px solid rgba(255,255,255,.2);
+
+  color:#f6f1ff;
+
+  line-height:1.9;
+
+  font-size:.96rem;
+
+  opacity:0;
+
+  transform:
+  translateY(15px)
+  scale(.95);
+
+  transition:.6s ease;
+
+  pointer-events:none;
+
+  z-index:10;
+
+  box-shadow:
+  0 0 30px rgba(255,255,255,.08);
+}
+
+.moon-quote.show{
+
+  opacity:1;
+
+  transform:
+  translateY(0px)
+  scale(1);
+}
+
+/* INTRO */
+
+#intro{
+
+  position:fixed;
+  inset:0;
+
+  background:
+  linear-gradient(135deg,#fff5fb,#f3e9ff);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+
+  z-index:99999;
+
+  transition:1.2s ease;
+}
+
+body.night #intro{
+
+  background:
+  linear-gradient(135deg,#181927,#272846);
+}
+
+.blur-bg{
+
+  position:absolute;
+  inset:0;
+
+  backdrop-filter:blur(18px);
+
+  background:rgba(255,255,255,.15);
+}
+
+/* CENTER BUTTERFLY */
+
+.center-butterfly{
+
+  width:170px;
+
+  position:relative;
+
+  z-index:3;
+
+  cursor:pointer;
+
+  transition:1.2s ease;
+}
+
+.center-butterfly.fly-away{
+
+  transform:
+  translate(450px,-700px)
+  rotate(35deg)
+  scale(.5);
+
+  opacity:0;
+}
+
+.center-butterfly img{
+
+  width:100%;
+
+  display:block;
+
+  animation:mainFlap 1s ease-in-out infinite;
+
+  filter:
+  drop-shadow(0 0 20px rgba(120,170,255,.7))
+  drop-shadow(0 0 40px rgba(255,255,255,.8));
+}
+
+@keyframes mainFlap{
+
+  0%{
+    transform:scaleX(1);
+  }
+
+  50%{
+    transform:scaleX(.72) rotate(3deg);
+  }
+
+  100%{
+    transform:scaleX(1);
+  }
+}
+
+.touch-text{
+
+  margin-top:25px;
+
+  font-size:1.15rem;
+
+  color:#775f83;
+
+  position:relative;
+
+  z-index:3;
+
+  animation:pulse 2s infinite;
+}
+
+body.night .touch-text{
+  color:#e4dcff;
+}
+
+@keyframes pulse{
+
+  0%{
+    opacity:.5;
+  }
+
+  50%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:.5;
+  }
+}
+
+/* PASSWORD */
+
+#passwordScreen{
+
+  position:fixed;
+  inset:0;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+
+  z-index:99998;
+
+  backdrop-filter:blur(18px);
+
+  background:rgba(255,255,255,.15);
+}
+
+.password-box{
+
+  width:320px;
+
+  padding:35px 25px;
+
+  border-radius:30px;
+
+  background:rgba(255,255,255,.18);
+
+  border:1px solid rgba(255,255,255,.35);
+
+  backdrop-filter:blur(18px);
+
+  text-align:center;
+}
+
+.password-title{
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:2.7rem;
+
+  color:#8755af;
+
+  margin-bottom:10px;
+}
+
+.password-sub{
+
+  color:#705d7d;
+
+  margin-bottom:28px;
+
+  font-size:.95rem;
+}
+
+.pin-display{
+
+  height:60px;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,.18);
+
+  border:1px solid rgba(255,255,255,.3);
+
+  margin-bottom:25px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:2rem;
+
+  letter-spacing:10px;
+
+  color:#8755af;
+}
+
+.keypad{
+
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:15px;
+}
+
+.key{
+
+  height:65px;
+
+  border:none;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,.18);
+
+  border:1px solid rgba(255,255,255,.3);
+
+  color:#8755af;
+
+  font-size:1.3rem;
+
+  cursor:pointer;
+}
+
+/* BUTTERFLIES */
+
+.butterfly{
+
+  position:fixed;
+
+  bottom:-140px;
+
+  pointer-events:none;
+
+  z-index:1;
+
+  opacity:.95;
+
+  animation-name:realFly;
+  animation-timing-function:ease-in-out;
+  animation-iteration-count:infinite;
+}
+
+.butterfly img{
+
+  width:100%;
+
+  display:block;
+
+  animation:flap .85s ease-in-out infinite;
+}
+
+@keyframes flap{
+
+  0%{
+    transform:scaleX(1);
+  }
+
+  50%{
+    transform:scaleX(.72) rotate(4deg);
+  }
+
+  100%{
+    transform:scaleX(1);
+  }
+}
+
+@keyframes realFly{
+
+  0%{
+    transform:
+    translate(0px,0px)
+    rotate(0deg);
+  }
+
+  20%{
+    transform:
+    translate(40px,-20vh)
+    rotate(6deg);
+  }
+
+  40%{
+    transform:
+    translate(-20px,-45vh)
+    rotate(-5deg);
+  }
+
+  60%{
+    transform:
+    translate(80px,-75vh)
+    rotate(10deg);
+  }
+
+  80%{
+    transform:
+    translate(20px,-105vh)
+    rotate(-8deg);
+  }
+
+  100%{
+    transform:
+    translate(140px,-145vh)
+    rotate(15deg);
+  }
+}
+
+/* MAIN */
+
+#mainContent{
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:1.5s ease;
+}
+
+#mainContent.show{
+
+  opacity:1;
+
+  visibility:visible;
+}
+
+/* HERO */
+
+.hero{
+
+  min-height:100vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+
+  text-align:center;
+
+  padding:20px;
+
+  position:relative;
+  z-index:2;
+}
+
+.hero h1{
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:5.5rem;
+
+  color:#8755af;
+
+  margin-bottom:18px;
+}
+
+body.night .hero h1{
+  color:#f0e9ff;
+}
+
+.hero p{
+
+  max-width:760px;
+
+  line-height:1.9;
+
+  font-size:1.12rem;
+
+  color:#6e5a79;
+}
+
+body.night .hero p{
+  color:#d8cff6;
+}
+
+/* MAGIC */
+
+.magic-section{
+
+  padding:30px 20px 100px;
+
+  text-align:center;
+
+  position:relative;
+  z-index:2;
+}
+
+.magic-title{
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:4rem;
+
+  color:#8755af;
+
+  margin-bottom:12px;
+}
+
+.magic-sub{
+
+  margin-bottom:38px;
+
+  color:#735f7d;
+}
+
+.magic-btn{
+
+  border:none;
+
+  padding:24px 80px;
+
+  border-radius:100px;
+
+  font-size:1.35rem;
+  font-weight:600;
+
+  color:white;
+
+  cursor:pointer;
+
+  background:
+  linear-gradient(135deg,#ffb8dc,#c9a3ff);
+}
+
+/* GALLERY */
+
+.gallery-section{
+
+  max-width:1450px;
+
+  margin:auto;
+
+  padding:70px 20px 120px;
+
+  position:relative;
+  z-index:2;
+}
+
+.gallery-title{
+
+  text-align:center;
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:4.5rem;
+
+  color:#8755af;
+
+  margin-bottom:65px;
+}
+
+body.night .gallery-title{
+  color:#f0e9ff;
+}
+
+.masonry{
+
+  column-count:3;
+
+  column-gap:22px;
+}
+
+.gallery-item{
+
+  break-inside:avoid;
+
+  margin-bottom:22px;
+
+  overflow:hidden;
+
+  border-radius:24px;
+
+  background:white;
+
+  position:relative;
+}
+
+body.night .gallery-item{
+  background:#2b2d45;
+}
+
+.gallery-item img{
+
+  width:100%;
+
+  display:block;
+
+  transition:transform .7s ease;
+
+  aspect-ratio:3/4;
+
+  object-fit:cover;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.08);
+}
+
+.caption{
+
+  padding:15px;
+
+  color:#705d7d;
+
+  font-size:.95rem;
+}
+
+body.night .caption{
+  color:#e2d8ff;
+}
+
+/* SMALL PHOTO BUTTERFLIES */
+
+.gallery-item::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:24px;
+  height:24px;
+
+  background:
+  url('butterfly.png')
+  center/contain
+  no-repeat;
+
+  top:12px;
+  right:12px;
+
+  opacity:0;
+
+  animation:
+  tinyButterfly 18s infinite ease-in-out;
+
+  filter:
+  drop-shadow(0 0 6px rgba(255,255,255,.45));
+}
+
+.gallery-item:nth-child(2)::after{
+  animation-delay:4s;
+}
+
+.gallery-item:nth-child(4)::after{
+  animation-delay:8s;
+}
+
+.gallery-item:nth-child(6)::after{
+  animation-delay:12s;
+}
+
+@keyframes tinyButterfly{
+
+  0%{
+    opacity:0;
+    transform:
+    translateY(-35px)
+    rotate(-15deg)
+    scale(.7);
+  }
+
+  8%{
+    opacity:1;
+    transform:
+    translateY(0px)
+    rotate(0deg)
+    scale(1);
+  }
+
+  20%{
+    opacity:1;
+  }
+
+  35%{
+    opacity:0;
+    transform:
+    translateX(60px)
+    translateY(-80px)
+    rotate(20deg)
+    scale(.8);
+  }
+
+  100%{
+    opacity:0;
+  }
+}
+
+/* LETTERS */
+
+.letters-section{
+
+  padding:60px 20px 120px;
+
+  position:relative;
+  z-index:2;
+}
+
+.letters-title{
+
+  text-align:center;
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:4rem;
+
+  color:#8755af;
+
+  margin-bottom:55px;
+}
+
+body.night .letters-title{
+  color:#f0e9ff;
+}
+
+.letters-grid{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(260px,1fr));
+
+  gap:25px;
+
+  max-width:1100px;
+
+  margin:auto;
+}
+
+.letter-card{
+
+  height:220px;
+
+  border-radius:28px;
+
+  background:
+  rgba(255,255,255,.15);
+
+  backdrop-filter:blur(16px);
+
+  border:1px solid rgba(255,255,255,.25);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  cursor:pointer;
+
+  padding:25px;
+}
+
+body.night .letter-card{
+
+  background:
+  rgba(255,255,255,.12);
+
+  border:
+  1px solid rgba(255,255,255,.22);
+
+  box-shadow:
+  0 0 25px rgba(180,150,255,.12);
+}
+
+.letter-card span{
+
+  font-size:1.3rem;
+
+  color:#f3eeff;
+
+  line-height:1.7;
+}
+
+/* MODALS */
+
+.modal,
+.letter-modal{
+
+  position:fixed;
+  inset:0;
+
+  background:rgba(25,10,40,.45);
+
+  backdrop-filter:blur(15px);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:.5s ease;
+
+  z-index:999999;
+}
+
+.modal.active,
+.letter-modal.active{
+
+  opacity:1;
+  pointer-events:auto;
+}
+
+.modal-content,
+.letter-box{
+
+  width:92%;
+  max-width:700px;
+
+  padding:50px 35px;
+
+  border-radius:30px;
+
+  background:
+  rgba(255,255,255,.95);
+
+  text-align:center;
+
+  overflow:hidden;
+}
+
+.modal-content h2,
+#letterTitle{
+
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:3rem;
+
+  color:#8755af;
+
+  margin-bottom:22px;
+}
+
+#message,
+#letterText{
+
+  line-height:2;
+
+  color:#695675;
+
+  font-size:1.02rem;
+
+  min-height:120px;
+}
+
+.word{
+
+  opacity:0;
+
+  display:inline-block;
+
+  transform:translateY(12px);
+
+  animation:reveal .45s forwards;
+}
+
+@keyframes reveal{
+
+  to{
+    opacity:1;
+    transform:translateY(0px);
+  }
+}
+
+.close-btn,
+.close-letter{
+
+  margin-top:32px;
+
+  border:none;
+
+  padding:14px 38px;
+
+  border-radius:100px;
+
+  background:#cca3ff;
+
+  color:white;
+
+  cursor:pointer;
+}
+
+footer{
+
+  text-align:center;
+
+  padding:50px 20px;
+
+  color:#7a6587;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+  .hero h1{
+    font-size:4rem;
+  }
+
+  .masonry{
+    column-count:2;
+  }
+}
+
+@media(max-width:600px){
+
+  .hero h1{
+    font-size:2.9rem;
+  }
+
+  .masonry{
+    column-count:1;
+  }
+
+  .center-butterfly{
+    width:140px;
+  }
+
+  .password-box{
+    width:92%;
+  }
+
+  .letters-title{
+    font-size:3rem;
+  }
+
+  .moon{
+    width:65px;
+    height:65px;
+    top:40px;
+    right:30px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="music-glow"></div>
+
+<!-- CONSTELLATION -->
+
+<div class="constellation">
+
+<!-- T -->
+<div class="star ts-star" style="top:12%; left:12%;"></div>
+<div class="star ts-star" style="top:18%; left:12%;"></div>
+<div class="star ts-star" style="top:24%; left:12%;"></div>
+<div class="star ts-star" style="top:30%; left:12%;"></div>
+
+<div class="star ts-star" style="top:12%; left:18%;"></div>
+<div class="star ts-star" style="top:18%; left:18%;"></div>
+<div class="star ts-star" style="top:24%; left:18%;"></div>
+
+<!-- S -->
+<div class="star ts-star" style="top:12%; left:34%;"></div>
+<div class="star ts-star" style="top:18%; left:34%;"></div>
+<div class="star ts-star" style="top:24%; left:34%;"></div>
+<div class="star ts-star" style="top:30%; left:34%;"></div>
+
+<div class="star ts-star" style="top:12%; left:40%;"></div>
+<div class="star ts-star" style="top:18%; left:40%;"></div>
+
+<!-- EXTRA STARS -->
+
+<div class="star" style="top:8%; left:62%;"></div>
+<div class="star" style="top:16%; left:75%;"></div>
+<div class="star" style="top:24%; left:88%;"></div>
+<div class="star" style="top:38%; left:70%;"></div>
+<div class="star" style="top:48%; left:82%;"></div>
+<div class="star" style="top:62%; left:92%;"></div>
+<div class="star" style="top:74%; left:68%;"></div>
+<div class="star" style="top:82%; left:80%;"></div>
+
+</div>
+
+<div class="shooting-star"></div>
+
+<div class="moon" id="moon"></div>
+
+<div class="moon-quote" id="moonQuote">
+🌙 Some Nights Moon is my only companion listening without any Judgement
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<div id="intro">
+
+<div class="blur-bg"></div>
+
+<div class="center-butterfly" id="touchButterfly">
+  <img src="butterfly.png">
+</div>
+
+<div class="touch-text">
+  Touch the butterfly for surprise 🦋
+</div>
+
+</div>
+
+<div id="passwordScreen">
+
+<div class="password-box">
+
+<div class="password-title">
+Put Password
+</div>
+
+<div class="password-sub">
+Enter the secret pin 💜
+</div>
+
+<div class="pin-display" id="pinDisplay"></div>
+
+<div class="keypad">
+
+<button class="key" onclick="addNumber('1')">1</button>
+<button class="key" onclick="addNumber('2')">2</button>
+<button class="key" onclick="addNumber('3')">3</button>
+
+<button class="key" onclick="addNumber('4')">4</button>
+<button class="key" onclick="addNumber('5')">5</button>
+<button class="key" onclick="addNumber('6')">6</button>
+
+<button class="key" onclick="addNumber('7')">7</button>
+<button class="key" onclick="addNumber('8')">8</button>
+<button class="key" onclick="addNumber('9')">9</button>
+
+<button class="key" onclick="clearPin()">✕</button>
+<button class="key" onclick="addNumber('0')">0</button>
+<button class="key" onclick="checkPin()">✓</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="butterfly" style="left:2%; width:65px; animation-duration:18s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:12%; width:90px; animation-duration:25s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:22%; width:72px; animation-duration:20s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:32%; width:100px; animation-duration:28s;"><img src="butterfly.png"></div>
+<div class="butterfly" style="left:42%; width:68px; animation-duration:19s;"><img src="butterfly.png"></div>
+
+<div id="mainContent">
+
+<section class="hero">
+
+<h1>For you, Taj Reena 🦋</h1>
+
+<p>
+My favourite person, comfort zone, the beautiful woman with the best smile in the entire world!!! and can't wait to say about the adventures and struggle we faced to hold our hands to our kids and maybe it's Romeo and Juliet for the world but it's selvabharathi and taj reena for them to set the example of love
+</p>
+
+</section>
+
+<section class="magic-section">
+
+<h2 class="magic-title">
+A little surprise for you ✨
+</h2>
+
+<p class="magic-sub">
+Something tiny, dreamy, and special made only for you 💜
+</p>
+
+<button class="magic-btn" onclick="openMagic()">
+Click me 🦋
+</button>
+
+</section>
+
+<section class="gallery-section">
+
+<h2 class="gallery-title">
+Memories 💌
+</h2>
+
+<div class="masonry">
+
+<div class="gallery-item">
+<img src="images/photo1.jpg">
+<div class="caption">The most beautiful you ever looked and I'm so lucky tbh ✨</div>
+</div>
+
+<div class="gallery-item">
+<img src="images/photo2.jpg">
+<div class="caption">Best smile in the entire world🦋</div>
+</div>
+
+<div class="gallery-item">
+<img src="images/photo3.jpg">
+<div class="caption">This make me emotional and it made me realise how important your presence is!! 💜</div>
+</div>
+
+<div class="gallery-item">
+<img src="images/photo4.jpg">
+<div class="caption">Cheers to more Bianca's 🌸</div>
+</div>
+
+<div class="gallery-item">
+<img src="images/photo5.jpg">
+<div class="caption">This jersey suits you better than me 💫</div>
+</div>
+
+<div class="gallery-item">
+<img src="images/photo6.jpg">
+<div class="caption">That night with stars and moon were in the sky for you but it was in front of me 🫠and you literally Woww and can't wait to repeat the magic with you forever ♾️ 💜</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="letters-section">
+
+<h2 class="letters-title">
+Open When 💌
+</h2>
+
+<div class="letters-grid">
+
+<div class="letter-card" onclick="openLetter('sad')">
+<span>Open when you're sad 💜</span>
+</div>
+
+<div class="letter-card" onclick="openLetter('happy')">
+<span>Open when you're happy ✨</span>
+</div>
+
+</div>
+
+</section>
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<h2>For Taj Reena 💜</h2>
+
+<p id="message"></p>
+
+<button class="close-btn" onclick="closeModal()">
+Close
+</button>
+
+</div>
+
+</div>
+
+<div class="letter-modal" id="letterModal">
+
+<div class="letter-box">
+
+<h2 id="letterTitle"></h2>
+
+<p id="letterText"></p>
+
+<button class="close-letter" onclick="closeLetter()">
+Close 💜
+</button>
+
+</div>
+
+</div>
+
+<footer>
+Made for Taj Reena 🦋
+</footer>
+
+</div>
+
+<script>
+
+const hour = new Date().getHours();
+
+if(hour >= 18 || hour <= 5){
+  document.body.classList.add("night");
+}
+
+const moon =
+document.getElementById("moon");
+
+const moonQuote =
+document.getElementById("moonQuote");
+
+moon.addEventListener("click",()=>{
+
+  moon.classList.add("active");
+
+  moonQuote.classList.add("show");
+
+  confetti({
+    particleCount:40,
+    spread:90,
+    scalar:.7,
+    origin:{
+      x:.88,
+      y:.12
+    }
+  });
+
+  setTimeout(()=>{
+
+    moon.classList.remove("active");
+
+  },1800);
+
+});
+
+let enteredPin = "";
+
+const touchButterfly =
+document.getElementById("touchButterfly");
+
+const intro =
+document.getElementById("intro");
+
+const passwordScreen =
+document.getElementById("passwordScreen");
+
+const bgMusic =
+document.getElementById("bgMusic");
+
+touchButterfly.onclick = function(){
+
+  touchButterfly.style.pointerEvents = "none";
+
+  touchButterfly.classList.add("fly-away");
+
+  bgMusic.volume = 0.75;
+
+  bgMusic.play();
+
+  setTimeout(() => {
+
+    intro.style.opacity = "0";
+
+    intro.style.visibility = "hidden";
+
+  }, 400);
+
+  setTimeout(() => {
+
+    passwordScreen.style.display = "flex";
+
+  }, 900);
+
+};
+
+function addNumber(num){
+
+  if(enteredPin.length < 4){
+
+    enteredPin += num;
+
+    updateDisplay();
+  }
+}
+
+function clearPin(){
+
+  enteredPin = "";
+
+  updateDisplay();
+}
+
+function updateDisplay(){
+
+  document
+  .getElementById("pinDisplay")
+  .innerHTML =
+  "•".repeat(enteredPin.length);
+}
+
+function checkPin(){
+
+  if(enteredPin === "1169"){
+
+    passwordScreen.style.display = "none";
+
+    document
+    .getElementById("mainContent")
+    .classList.add("show");
+  }
+
+  else{
+
+    enteredPin = "";
+
+    updateDisplay();
+
+    alert("Wrong Password 🥺");
+  }
+}
+
+const hiddenMessage =
+"Our goals and adventure awaits for us !! The universe will help us for us. Wink wink!! 😉. 🦋";
+
+function openMagic(){
+
+  const modal =
+  document.getElementById("modal");
+
+  modal.classList.add("active");
+
+  confetti({
+    particleCount:240,
+    spread:140,
+    startVelocity:35,
+    scalar:1.1,
+    origin:{ y:0.6 }
+  });
+
+  const messageBox =
+  document.getElementById("message");
+
+  messageBox.innerHTML = "";
+
+  const words =
+  hiddenMessage.split(" ");
+
+  words.forEach((word,index)=>{
+
+    const span =
+    document.createElement("span");
+
+    span.classList.add("word");
+
+    span.style.animationDelay =
+    `${index * 0.08}s`;
+
+    span.innerHTML = word + "&nbsp;";
+
+    messageBox.appendChild(span);
+
+  });
+
+}
+
+function closeModal(){
+
+  document
+  .getElementById("modal")
+  .classList.remove("active");
+}
+
+const letters = {
+
+  sad: {
+    title: "For your sad days 💜",
+    text:
+    "Please be dependent it isn't bad no matter what selvabharathi is always for you and waiting for you and these arms are always only reserved for you."
+  },
+
+  happy: {
+    title: "For your happiest moments ✨",
+    text:
+    "Your smile makes everything feels lite. Always Keep Smile on your Face. Don't Forget to Smile."
+  }
+
+};
+
+function openLetter(type){
+
+  document
+  .getElementById("letterModal")
+  .classList.add("active");
+
+  document
+  .getElementById("letterTitle")
+  .innerText =
+  letters[type].title;
+
+  document
+  .getElementById("letterText")
+  .innerText =
+  letters[type].text;
+}
+
+function closeLetter(){
+
+  document
+  .getElementById("letterModal")
+  .classList.remove("active");
+}
+
+</script>
+
+</body>
+</html>
